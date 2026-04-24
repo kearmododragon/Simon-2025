@@ -12,7 +12,7 @@ body {
 
 /* Title */
 .title {
-    color: white;
+    color: rgb(217, 176, 255);
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -40,7 +40,7 @@ body {
     padding: 0;
 }
 
-.start {
+.startbtn {
     border-radius: 25%;
 }
 
@@ -116,4 +116,9 @@ button:active {
 .timer {
     color: aliceblue;
     margin-bottom: 20px;
+}
+
+.hidden {
+    display: none;
+    pointer-events: none;
 }
