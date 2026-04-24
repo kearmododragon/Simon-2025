@@ -122,3 +122,17 @@ button:active {
     display: none;
     pointer-events: none;
 }
+
+.active {
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+
+    box-shadow:
+        0 0 1em .25em var(--glow-color),
+        0 0 4em 2em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+}
+
+.game-over {
+background-color: black;
+}
