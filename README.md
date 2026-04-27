@@ -15,3 +15,5 @@ ice box:
 - difficulty level (increase number of lights)
 - background music 
 - design of the. MVP: 4 circles. Ice box: something else 
+
+working from laptop, added branch
