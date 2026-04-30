@@ -4,6 +4,9 @@ const sounds = {
     blue: new Audio("sounds/glass.mp3"),
     green: new Audio("sounds/joke.mp3"),
 }
+const backgroundMusic = new Audio("sounds/background.mp3");
+backgroundMusic.loop = true;
+backgroundMusic.volume = 0.2;
 const colors = ["red", "yellow", "blue", "green"]
 const timerEl = document.querySelector(".timer h1")
 const start = document.querySelector(".start-btn")
@@ -28,9 +31,14 @@ const gameState = {
 
 function playSound(color) {
     const sound = sounds[color];
+    backgroundMusic.volume = 0;
+    backgroundMusic.play();
     sound.currentTime = 0;
     sound.play();
     console.log(color)
+    setTimeout(() => {
+        backgroundMusic.volume = 0.2;
+    }, 300);
 }
 function startGame() {
     reset();
@@ -40,6 +48,8 @@ function startGame() {
     cpuTurn();
     gameState.round++;
     console.log("Round: ", gameState.round)
+    bgMusic.currentTime = 0;
+    bgMusic.play();
 }
 function startTimer() {
     gameState.startTime = Date.now();
@@ -63,7 +73,7 @@ function reset() {
     gameState.currentSequence = [];
     gameState.score = 0;
     gameState.round = 0,
-    clearInterval(gameState.timerInterval)
+        clearInterval(gameState.timerInterval)
     gameState.timerInterval = 0;
     timerEl.textContent = "00:00:00"
     gameState.userIndex = 0;
@@ -107,9 +117,9 @@ function guess(color) {
             setInputEnabled(false);
         }
     }
-else {
-    triggerGameOver("wrong answer");
-}
+    else {
+        triggerGameOver("wrong answer");
+    }
 }
 function flashOn() {
     gameButtons.forEach(button => {
@@ -237,13 +247,13 @@ function triggerGameOver(reason) {
     console.log(totalTime)
 
     gameState.attempts.push({
-    round: gameState.round,    
-    score: gameState.score,
-    time: Math.floor((Date.now() - gameState.startTime) / 1000)
-});
+        round: gameState.round,
+        score: gameState.score,
+        time: Math.floor((Date.now() - gameState.startTime) / 1000)
+    });
     gameState.attempts
-    .sort((a, b) => b.score - a.score)
-    .splice(5);
+        .sort((a, b) => b.score - a.score)
+        .splice(5);
 
     gameState.acceptingInput = false;
     gameState.isUserTurn = false;

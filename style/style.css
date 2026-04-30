@@ -172,3 +172,8 @@ background-color: black;
     text-decoration: underline;
     margin-bottom: 6px;
 }
+@media (max-width: 600px) {
+    .title h2 {
+        display: none;
+    }
+}
